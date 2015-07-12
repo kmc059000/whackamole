@@ -28,8 +28,8 @@ p {
 }
 .wam-pesky-mole,
 .wam-pesky-mole-dead {
-	width: 125px;
-	height: 88px;
+	width: 100px;
+	height: 170px;
 	position: absolute;
 	display: block;
 	cursor: pointer;
