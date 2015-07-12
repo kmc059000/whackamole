@@ -30,15 +30,50 @@ p {
 .wam-pesky-mole-dead {
 	width: 125px;
 	height: 88px;
-	background: url('images/mole4.png') no-repeat;
 	position: absolute;
 	display: block;
 	cursor: pointer;
 	z-index: 10;
 }
 
-.wam-pesky-mole-dead {
-	background: url('images/mole-dead8.png') no-repeat;
+.alive_devon {
+    background: url('images/alive_devon.png') no-repeat;
+}
+
+.alive_jeff {
+    background: url('images/alive_jeff.png') no-repeat;
+}
+
+.alive_ken {
+    background: url('images/alive_ken.png') no-repeat;
+}
+
+.alive_matt {
+    background: url('images/alive_matt.png') no-repeat;
+}
+
+.alive_ryan {
+    background: url('images/alive_devon.png') no-repeat;
+}
+
+.dead_devon {
+    background: url('images/dead_ryan.png') no-repeat;
+}
+
+.dead_jeff {
+    background: url('images/dead_jeff.png') no-repeat;
+}
+
+.dead_ken{
+    background: url('images/dead_ken.png') no-repeat;
+}
+
+.dead_matt {
+    background: url('images/dead_matt.png') no-repeat;
+}
+
+.dead_ryan{
+    background: url('images/dead_ryan.png') no-repeat;
 }
 
 .wam-scoreboard {

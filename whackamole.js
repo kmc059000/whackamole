@@ -17,17 +17,34 @@
 // what with the whole window.whackamole = whackamole bit, but... 
 // i dunno... i like this better.. and i have to be different... :)
 var whackamole = whackamole || (function(window, undefined) {
+
 	
 	// booleans, ints, and timers oh my!
 	var game, score, popping, startTime, currentTime, clicked, moles, gameTimeout, hits = 0;
 	
 	// configuration options
 	// TODO: make game configurable, by passing in options object like jquery plugin	
-	var	liveClass = "wam-pesky-mole",
-		deadClass = "wam-pesky-mole-dead",
-		hidingInterval = 1500,
+	var	hidingInterval = 1500,
 		poppingInterval = 750,
 		moleLimit = 10;
+
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function getPersonClass() {
+            switch(getRandomInt(0, 5)) {
+                case 0: return 'devon';
+                case 1: return 'jeff';
+                case 2: return 'ken';
+                case 3: return 'matt';
+                case 4: return 'ryan';
+            }
+        }
+
+        function getLiveClass() {
+            return 'wam-pesky-mole alive_' + getPersonClass();
+        }
 		
 	// utility function to get computed style
 	// copied from a google search ;)
@@ -46,7 +63,7 @@ var whackamole = whackamole || (function(window, undefined) {
 		mode: "start",
 		// is it live? or live?
 		live: function() {
-			this.mole.className = liveClass;
+			this.mole.className = getLiveClass();
 			this.mole.clicked = false;
 			this.mode = "main";
 		},
@@ -55,7 +72,7 @@ var whackamole = whackamole || (function(window, undefined) {
 			var currentTime = (new Date).getTime();
 			score += (Math.floor( ( ( poppingInterval - (currentTime - startTime) ) / poppingInterval) * 100 )) * 10;
 			hits++;
-			this.mole.className = deadClass;
+			this.mole.className = this.mole.className.replace('alive', 'dead').replace('wam-pesky-mole', 'wam-pesky-mole-dead');
 			this.mode = "dead";
 		},
 		move: function() {
@@ -93,7 +110,7 @@ var whackamole = whackamole || (function(window, undefined) {
 		
 		// the mole
 		mole = game.mole = document.createElement("div");
-		mole.className = liveClass;
+		mole.className = getLiveClass();
 		mole.style.display = "none";
 		// who needs cross-browser event handling?
 		mole.onclick = function() {
