@@ -24,8 +24,8 @@ var whackamole = whackamole || (function(window, undefined) {
 	
 	// configuration options
 	// TODO: make game configurable, by passing in options object like jquery plugin	
-	var	hidingInterval = 1500,
-		poppingInterval = 750,
+	var	hidingInterval = 750,
+		poppingInterval = 1500,
 		moleLimit = 10,
 		quotes = ['That\'s weird...',
 				'It\'s never done that before.',
