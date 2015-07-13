@@ -105,8 +105,8 @@ var whackamole = whackamole || (function(window, undefined) {
             this.mole.style.top = top + "px";
             this.mole.style.left = left + "px";
 
-			this.quote.css('top', top + 170 + "px");
-			this.quote.css('left', (left - 75) + "px");
+			this.quote.css('top', top - 70 + "px");
+			this.quote.css('left', (left - 50) + "px");
 
 			startTime = (new Date).getTime();
 		},
