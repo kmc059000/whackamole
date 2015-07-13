@@ -17,8 +17,8 @@
 // what with the whole window.whackamole = whackamole bit, but... 
 // i dunno... i like this better.. and i have to be different... :)
 var whackamole = whackamole || (function(window, undefined) {
-
 	
+
 	// booleans, ints, and timers oh my!
 	var game, score, popping, startTime, currentTime, clicked, moles, gameTimeout, hits = 0;
 	
@@ -26,7 +26,27 @@ var whackamole = whackamole || (function(window, undefined) {
 	// TODO: make game configurable, by passing in options object like jquery plugin	
 	var	hidingInterval = 1500,
 		poppingInterval = 750,
-		moleLimit = 10;
+		moleLimit = 10,
+		quotes = ['That\'s weird...',
+				'It\'s never done that before.',
+				'It worked yesterday.',
+				'How is that possible?',
+				'It must be a hardware problem.',
+				'What did you type in wrong to get it to crash?',
+				'There is something funky in your data.',
+				'I haven\'t touched that module in weeks!',
+				'You must have the wrong version.',
+				'It\'s just some unlucky coincidence.',
+				'I can\'t test everything!',
+				'THIS can\'t be the source of THAT.',
+				'It works, but it hasn\'t been tested.',
+				'Somebody must have changed my code.',
+				'Did you check for a virus on your system?',
+				'Even though it doesn\'t work, how does it feel?',
+				'You can\'t use that version on your system.',
+				'Why do you want to do it that way?',
+				'Where were you when the program blew up?',
+				'It works on my machine.'];
 
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min)) + min;
@@ -65,6 +85,7 @@ var whackamole = whackamole || (function(window, undefined) {
 		live: function() {
 			this.mole.className = getLiveClass();
 			this.mole.clicked = false;
+			$(this.quote).text(_.sample(quotes, 1));
 			this.mode = "main";
 		},
 		// the violence
@@ -78,14 +99,22 @@ var whackamole = whackamole || (function(window, undefined) {
 		move: function() {
 			moles++;
 			clicked = false;
-			this.mole.style.top = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "height")) - parseInt(getStyle(this.mole, "height")) ) ) + "px";
-			this.mole.style.left = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "width")) - parseInt(getStyle(this.mole, "width")) ) ) + "px";
+			var top = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "height")) - parseInt(getStyle(this.mole, "height")) ));
+			var left = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "width")) - parseInt(getStyle(this.mole, "width")) ));
+
+            this.mole.style.top = top + "px";
+            this.mole.style.left = left + "px";
+
+			this.quote.css('top', top + 170 + "px");
+			this.quote.css('left', (left - 75) + "px");
+
 			startTime = (new Date).getTime();
 		},
 		// this seems odd; this is what you get when writing code while speepy
 		// let's leave it in... i don't think the game works without it. 
 		togglePop: function() {
-			this.mole.style.display = (popping) ? "block" : "none";
+			$(this.mole).css('display', (popping) ? "block" : "none");
+			this.quote.css('display', (popping) ? "block" : "none");
 		},
 		reset: function() {
 			game.mode = "main";
@@ -106,10 +135,10 @@ var whackamole = whackamole || (function(window, undefined) {
 	// a lot of DOM scripting; probably rife with areas for optimization
 	function setup(elementId) {
 		
-		var mole, sb, stage;
+		var mole, sb, stage, quote;
 		
 		// the mole
-		mole = game.mole = document.createElement("div");
+		mole = game.mole = document.createElement('div');
 		mole.className = getLiveClass();
 		mole.style.display = "none";
 		// who needs cross-browser event handling?
@@ -122,7 +151,12 @@ var whackamole = whackamole || (function(window, undefined) {
 				step();
 			}
 		};
-		
+
+		quote = game.quote = $('<span/>');
+		quote.addClass('quote');
+		quote.text(_.sample(quotes, 1));
+		quote.css('display', 'none');
+
 		// the scoreboard
 		sb = game.scoreboard = document.createElement("div");
 		sb.className = "wam-scoreboard";
@@ -167,6 +201,7 @@ var whackamole = whackamole || (function(window, undefined) {
 		stage.appendChild(ss);
 		stage.appendChild(sb);
 		stage.appendChild(mole);
+		stage.appendChild(quote.get(0));
 		stage.appendChild(es);
 		
 	}
