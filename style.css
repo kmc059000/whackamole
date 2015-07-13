@@ -10,20 +10,11 @@ h1 {
 p {
 	font-size: 11px;
 }
-.wrapper {
-	padding: 5px;
-	background: #e1e1e1;
-	width: 510px;
-	margin: 50px auto;
-}
 
 #wam-game {
 	background: #78b73b;
-	height: 300px;
-	width: 500px;
 	display: block;
 	position: relative;
-	margin: 0 auto;
 	border: 1px solid #3b5a1d;
 }
 .wam-pesky-mole,

@@ -136,6 +136,18 @@ var whackamole = whackamole || (function(window, undefined) {
 	function setup(elementId) {
 		
 		var mole, sb, stage, quote;
+
+		var container = $('#wam-game');
+		container.css('width', Math.max(
+			Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
+			Math.max(document.body.offsetHeight, document.documentElement.offsetHeight),
+			Math.max(document.body.clientHeight, document.documentElement.clientHeight)) - 50);
+
+		container.css('height', Math.max(
+			Math.max(document.body.scrollWidth, document.documentElement.scrollWidth),
+			Math.max(document.body.offsetWidth, document.documentElement.offsetWidth),
+			Math.max(document.body.clientWidth, document.documentElement.clientWidth)) - 50);
+
 		
 		// the mole
 		mole = game.mole = document.createElement('div');
