@@ -28,43 +28,43 @@ p {
 }
 
 .alive_devon {
-    background: url('images/alive_devon.png') no-repeat;
+    background: url('images/alive_devon-100x160.png') no-repeat;
 }
 
 .alive_jeff {
-    background: url('images/alive_jeff.png') no-repeat;
+    background: url('images/alive_jeff-100x160.png') no-repeat;
 }
 
 .alive_ken {
-    background: url('images/alive_ken.png') no-repeat;
+    background: url('images/alive_ken-100x160.png') no-repeat;
 }
 
 .alive_matt {
-    background: url('images/alive_matt.png') no-repeat;
+    background: url('images/alive_matt-100x160.png') no-repeat;
 }
 
 .alive_ryan {
-    background: url('images/alive_devon.png') no-repeat;
+    background: url('images/alive_ryan-100x160.png') no-repeat;
 }
 
 .dead_devon {
-    background: url('images/dead_ryan.png') no-repeat;
+    background: url('images/dead_devon-100x160.png') no-repeat;
 }
 
 .dead_jeff {
-    background: url('images/dead_jeff.png') no-repeat;
+    background: url('images/dead_jeff-100x160.png') no-repeat;
 }
 
 .dead_ken{
-    background: url('images/dead_ken.png') no-repeat;
+    background: url('images/dead_ken-100x160.png') no-repeat;
 }
 
 .dead_matt {
-    background: url('images/dead_matt.png') no-repeat;
+    background: url('images/dead_matt-100x160.png') no-repeat;
 }
 
 .dead_ryan{
-    background: url('images/dead_ryan.png') no-repeat;
+    background: url('images/dead_ryan-100x160.png') no-repeat;
 }
 
 .quote {
