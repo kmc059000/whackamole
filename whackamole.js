@@ -281,6 +281,7 @@ var whackamole = whackamole || (function(window, undefined) {
 				break;
 			case "end":
 			default:
+				window.location.href = window.location.href.replace('index', 'credits');
 				game.scoreboard.innerHTML = "Final Score: " + score + "<br />Moles: " + hits + " / " + moles;
 				game.endScreen.style.display = "block";
 				break;
