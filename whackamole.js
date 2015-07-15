@@ -26,7 +26,7 @@ var whackamole = whackamole || (function(window, undefined) {
 	// TODO: make game configurable, by passing in options object like jquery plugin	
 	var	hidingInterval = 750,
 		poppingInterval = 1500,
-		moleLimit = 10,
+		moleLimit = 20,
 		quotes = [
 			"That's weird...",
 			"It's never done that before.",
@@ -136,7 +136,7 @@ var whackamole = whackamole || (function(window, undefined) {
 		move: function() {
 			moles++;
 			clicked = false;
-			var top = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "height")) - parseInt(getStyle(this.mole, "height")) - 80 ));
+			var top = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "height")) - parseInt(getStyle(this.mole, "height")) - 100 ));
 			var left = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "width")) - parseInt(getStyle(this.mole, "width"))));
 
             this.mole.style.top = top + "px";
