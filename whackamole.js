@@ -136,13 +136,13 @@ var whackamole = whackamole || (function(window, undefined) {
 		move: function() {
 			moles++;
 			clicked = false;
-			var top = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "height")) - parseInt(getStyle(this.mole, "height")) - 100 ));
-			var left = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "width")) - parseInt(getStyle(this.mole, "width"))));
+			var top = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "height")) - parseInt(getStyle(this.mole, "height")) - 130 )) + 140;
+			var left = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "width")) - parseInt(getStyle(this.mole, "width")) - 150)) + 100;
 
             this.mole.style.top = top + "px";
             this.mole.style.left = left + "px";
 
-			this.quote.css('top', top - 70 + "px");
+			this.quote.css('top', top - 100 + "px");
 			this.quote.css('left', (left - 120) + "px");
 
 			startTime = (new Date).getTime();
