@@ -19,8 +19,8 @@ p {
 }
 .wam-pesky-mole,
 .wam-pesky-mole-dead {
-	width: 100px;
-	height: 170px;
+	width: 200px;
+	height: 320px;
 	position: absolute;
 	display: block;
 	cursor: pointer;
@@ -28,50 +28,50 @@ p {
 }
 
 .alive_devon {
-    background: url('images/alive_devon-100x160.png') no-repeat;
+    background: url('images/alive_devon-200x320.png') no-repeat;
 }
 
 .alive_jeff {
-    background: url('images/alive_jeff-100x160.png') no-repeat;
+    background: url('images/alive_jeff-200x320.png') no-repeat;
 }
 
 .alive_ken {
-    background: url('images/alive_ken-100x160.png') no-repeat;
+    background: url('images/alive_ken-200x320.png') no-repeat;
 }
 
 .alive_matt {
-    background: url('images/alive_matt-100x160.png') no-repeat;
+    background: url('images/alive_matt-200x320.png') no-repeat;
 }
 
 .alive_ryan {
-    background: url('images/alive_ryan-100x160.png') no-repeat;
+    background: url('images/alive_ryan-200x320.png') no-repeat;
 }
 
 .dead_devon {
-    background: url('images/dead_devon-100x160.png') no-repeat;
+    background: url('images/dead_devon-200x320.png') no-repeat;
 }
 
 .dead_jeff {
-    background: url('images/dead_jeff-100x160.png') no-repeat;
+    background: url('images/dead_jeff-200x320.png') no-repeat;
 }
 
 .dead_ken{
-    background: url('images/dead_ken-100x160.png') no-repeat;
+    background: url('images/dead_ken-200x320.png') no-repeat;
 }
 
 .dead_matt {
-    background: url('images/dead_matt-100x160.png') no-repeat;
+    background: url('images/dead_matt-200x320.png') no-repeat;
 }
 
 .dead_ryan{
-    background: url('images/dead_ryan-100x160.png') no-repeat;
+    background: url('images/dead_ryan-200x320.png') no-repeat;
 }
 
 .quote {
-	font-size: 12px;
+	font-size: 24px;
 	position: relative;
-	width: 200px;
-	height: 30px;
+	width: 400px;
+	height: 60px;
 	text-align: center;
 	padding: 5px;
 	background-color: #fff;
