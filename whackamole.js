@@ -132,10 +132,14 @@ var whackamole = whackamole || (function(window, undefined) {
 			hits++;
 			this.mole.className = this.mole.className.replace('alive', 'dead').replace('wam-pesky-mole', 'wam-pesky-mole-dead');
 			this.mode = "dead";
+			var snd = new Audio("sounds/death_sound.mp3");
+			snd.play();
 		},
 		move: function() {
 			moles++;
 			clicked = false;
+			var snd = new Audio("sounds/popup_sound.mp3");
+			snd.play();
 			var top = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "height")) - parseInt(getStyle(this.mole, "height")) - 130 )) + 140;
 			var left = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "width")) - parseInt(getStyle(this.mole, "width")) - 150)) + 100;
 
@@ -257,6 +261,8 @@ var whackamole = whackamole || (function(window, undefined) {
 	function step() {
 		switch(game.mode) {
 			case "start":
+				var sound = new Audio("sounds/chime_sound.mp3");
+				sound.play();
 				game.showStart();
 				break;
 			case "dead":
@@ -282,6 +288,8 @@ var whackamole = whackamole || (function(window, undefined) {
 			case "end":
 			default:
 				window.location.href = window.location.href.replace('index', 'credits');
+				var sound = new Audio("sounds/tada_sound.mp3");
+				sound.play();
 				game.scoreboard.innerHTML = "Final Score: " + score + "<br />Moles: " + hits + " / " + moles;
 				game.endScreen.style.display = "block";
 				break;
