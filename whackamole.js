@@ -20,7 +20,8 @@ var whackamole = whackamole || (function(window, undefined) {
 	
 
 	// booleans, ints, and timers oh my!
-	var game, score, popping, startTime, currentTime, clicked, moles, gameTimeout, hits = 0;
+	var game, score, popping, startTime, currentTime, clicked, moles, gameTimeout, hits = 0,
+		sound_pop, sound_death, sound_chime, sound_tada;
 	
 	// configuration options
 	// TODO: make game configurable, by passing in options object like jquery plugin	
@@ -132,14 +133,12 @@ var whackamole = whackamole || (function(window, undefined) {
 			hits++;
 			this.mole.className = this.mole.className.replace('alive', 'dead').replace('wam-pesky-mole', 'wam-pesky-mole-dead');
 			this.mode = "dead";
-			var snd = new Audio("sounds/death_sound.mp3");
-			snd.play();
+			sound_death.play();
 		},
 		move: function() {
 			moles++;
 			clicked = false;
-			var snd = new Audio("sounds/popup_sound.mp3");
-			snd.play();
+			sound_pop.play();
 			var top = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "height")) - parseInt(getStyle(this.mole, "height")) - 130 )) + 140;
 			var left = Math.floor(Math.random() * (parseInt(getStyle(this.stage, "width")) - parseInt(getStyle(this.mole, "width")) - 150)) + 100;
 
@@ -182,7 +181,10 @@ var whackamole = whackamole || (function(window, undefined) {
 		container.css('width', document.documentElement.clientWidth - 50);
 
 		container.css('height', document.documentElement.clientHeight - 50);
-
+		sound_pop = new Audio("sounds/popup_sound.mp3");
+		sound_death = new Audio("sounds/death_sound.mp3");
+		sound_tada = new Audio("sounds/tada_sound.mp3");
+		sound_chime = new Audio("sounds/chime_sound.mp3");
 		
 		// the mole
 		mole = game.mole = document.createElement('div');
@@ -261,8 +263,6 @@ var whackamole = whackamole || (function(window, undefined) {
 	function step() {
 		switch(game.mode) {
 			case "start":
-				var sound = new Audio("sounds/chime_sound.mp3");
-				sound.play();
 				game.showStart();
 				break;
 			case "dead":
@@ -288,8 +288,6 @@ var whackamole = whackamole || (function(window, undefined) {
 			case "end":
 			default:
 				window.location.href = window.location.href.replace('index', 'credits');
-				var sound = new Audio("sounds/tada_sound.mp3");
-				sound.play();
 				game.scoreboard.innerHTML = "Final Score: " + score + "<br />Moles: " + hits + " / " + moles;
 				game.endScreen.style.display = "block";
 				break;
