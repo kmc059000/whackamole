@@ -219,6 +219,7 @@ var whackamole = whackamole || (function(window, undefined) {
 		ss.innerHTML = "start";
 		ss.style.display = "none";
 		ss.onclick = function() {
+			sound_chime.play();
 			game.mode = "main";
 			this.style.display = "none";
 			step();
@@ -232,14 +233,24 @@ var whackamole = whackamole || (function(window, undefined) {
 		es.style.display = "none";
 		es.innerHTML = "Play again?";
 		es.onclick = function() {
+			sound_chime.play();
 			game.reset();
-			game.mode = "main"
+			game.mode = "main";
 			this.style.display = "none";
-			game.startScreen.display = "none";
+			game.endCreditsButton.style.display = "none";
 			step();
-			
 		}
-		
+
+		//credits button
+		cr = game.endCreditsButton = document.createElement("div");
+		cr.className = "wam-endCreditsButton";
+		cr.style.display = "none";
+		cr.innerHTML = "Credits Button";
+		cr.onclick = function() {
+			game.mode = "credits";
+			step();
+		}
+
 		// the game stage
 		stage = game.stage = document.getElementById(elementId);
 		stage.style.position = "relative";
@@ -252,6 +263,7 @@ var whackamole = whackamole || (function(window, undefined) {
 		stage.appendChild(mole);
 		stage.appendChild(quote.get(0));
 		stage.appendChild(es);
+		stage.appendChild(cr);
 		
 	}
 	
@@ -285,11 +297,17 @@ var whackamole = whackamole || (function(window, undefined) {
 				popping = (popping) ? false : true;
 				gameTimeout = setTimeout(step, (popping) ? hidingInterval : poppingInterval);
 				break;
+			case "credits":
+ 				window.location.href = window.location.href.replace('index', 'credits');
+				break;
 			case "end":
 			default:
-				window.location.href = window.location.href.replace('index', 'credits');
+				sound_tada.play();
+				game.mole.style.display = "none";
+				game.quote.css('display', 'none');
 				game.scoreboard.innerHTML = "Final Score: " + score + "<br />Moles: " + hits + " / " + moles;
 				game.endScreen.style.display = "block";
+				game.endCreditsButton.style.display = "block";
 				break;
 		}
 	}
