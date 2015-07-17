@@ -116,3 +116,13 @@ p {
 	text-indent: -9999px;
 	cursor: pointer;
 }
+.wam-endCreditsButton {
+	position: absolute;
+	top: 200px;
+	left: 100px;
+	height: 68px;
+	width: 308px;
+	background: url('images/credits.png') no-repeat;
+	text-indent: -9999px;
+	cursor: pointer;
+}
